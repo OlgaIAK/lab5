@@ -1,0 +1,30 @@
+language: cpp
+sudo: required
+
+compiler:
+  - gcc
+  - clang
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-7
+      - cmake
+      - cmake-data
+      - lcov
+
+before_script:
+  - mkdir -p build
+  - cd build
+  - cmake .. -DBUILD_TESTS=ON -DCMAKE_BUILD_TYPE=Debug
+
+script:
+  - cmake --build . --target check
+  - ./check
+
+after_success:
+  - cd ..
+  - pip install --user cpp-coveralls
+  - coveralls --exclude third-party --exclude build --gcov-options '\-lp'
