@@ -31,3 +31,17 @@ public:
     MOCK_METHOD(void, SetTransactionFee, (int fee_amount));
     MOCK_METHOD(bool, ExecuteTransfer, (Account&, Account&, int));
 };
+## Результаты тестирования
+
+Запуск всех тестов завершился успешно. Вот вывод консоли:
+
+```bash
+[==========] Running 4 tests from 2 test suites.
+[ RUN      ] BankAccountTest.ShouldThrowWhenAccountNotLocked
+[       OK ] BankAccountTest.ShouldThrowWhenAccountNotLocked (0 ms)
+[ RUN      ] BankAccountTest.ShouldHandleAccountOperations
+[       OK ] BankAccountTest.ShouldHandleAccountOperations (0 ms)
+[ RUN      ] MoneyTransferTest.ShouldProcessFinancialTransaction
+[       OK ] MoneyTransferTest.ShouldProcessFinancialTransaction (0 ms)
+[==========] 4 tests from 2 test suites ran. (1 ms total)
+[  PASSED  ] 4 tests.
